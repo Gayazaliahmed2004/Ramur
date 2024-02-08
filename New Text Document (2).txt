@@ -1,0 +1,153 @@
+Program:6 
+Develop a JAVA program to create an abstract class Shape with abstract methods calculateArea() and 
+calculatePerimeter(). Create subclasses Circle and Triangle that extend the Shape class and implement the 
+respective methods to calculate the area and perimeter of each shape. 
+Aim: Demonstrate constructor and method overloading in java programming. 
+import java.util.Scanner; 
+public abstract class Shape { 
+  private String name; 
+ 
+     public Shape(String name) { 
+         this.name = name; 
+     } 
+ 
+     public String getName() { 
+         return name; 
+     } 
+ 
+     public abstract double calculateArea(); 
+ 
+     public abstract double calculatePerimeter(); 
+ 
+     public static void main(String[] args) { 
+         double i, j, k, l; 
+         System.out.println("Enter Radius of circle:"); 
+         Scanner sc = new Scanner(System.in); 
+         i = sc.nextDouble(); 
+         Circles circle = new Circles("Circle", i); 
+         System.out.println("Area of circle: " + circle.calculateArea()); 
+         System.out.println("Perimeter of circle: " + 
+circle.calculatePerimeter()); 
+ 
+         System.out.println("Enter sides of Triangle j, k, l:"); 
+         j = sc.nextDouble(); 
+         k = sc.nextDouble(); 
+         l = sc.nextDouble(); 
+         Shape triangle = new Triangle("Triangle", j, k, l); 
+         System.out.println("Area of triangle: " + triangle.calculateArea()); 
+         System.out.println("Perimeter of Triangle: " + 
+triangle.calculatePerimeter()); 
+     } 
+ } 
+ 
+ class Circles extends Shape { 
+     private double i; // radius is declared as variable i 
+ 
+     public Circles(String name, double i) { 
+         super(name); 
+         this.i = i; 
+     } 
+ 
+     @Override 
+     public double calculateArea() { 
+         return Math.PI * i * i; 
+     } 
+ 
+     @Override 
+     public double calculatePerimeter() { 
+         return 2 * Math.PI * i; 
+     } 
+ } 
+ 
+ class Triangle extends Shape { 
+     private double sideA; 
+     private double sideB; 
+     private double sideC; 
+ 
+     public Triangle(String name, double sideA, double sideB, double sideC) { 
+         super(name); 
+         this.sideA = sideA; 
+         this.sideB = sideB; 
+         this.sideC = sideC; 
+     } 
+ 
+     @Override 
+     public double calculateArea() { 
+         double semiperimeter = (sideA + sideB + sideC) / 2; 
+         return Math.sqrt(semiperimeter * (semiperimeter - sideA) * (semiperimeter - sideB) * (semiperimeter - sideC)); 
+     } 
+ 
+     @Override 
+     public double calculatePerimeter() { 
+         return sideA + sideB + sideC; 
+     } 
+ } 
+ 
+Output: 
+Enter Radius of circle: 
+5 
+Area of circle: 78.53981633974483 
+Perimeter of circle: 31.41592653589793 
+Enter sides of Triangle j, k, l: 
+3 4 5 
+Area of triangle: 6.0 
+Perimeter of Triangle: 12.0 
+  
+ 
+Program:7  
+Develop a JAVA program to create an interface Resizable with methods resizeWidth(int width) and 
+resizeHeight(int height) that allow an object to be resized. Create a class Rectangle that implements the Resizable 
+interface and implements the resize methods. 
+ Aim: Demonstrate the use of packages in java programming 
+ 
+  interface Resizable { 
+   void resizeWidth(int width); 
+   void resizeHeight(int height); 
+ } 
+ 
+ class Rectangle implements Resizable { 
+     private int width; 
+     private int height; 
+ 
+     public Rectangle(int width, int height) { 
+         this.width = width; 
+         this.height = height; 
+     } 
+ 
+     @Override 
+     public void resizeWidth(int width) { 
+         this.width = width; 
+     } 
+ 
+     @Override 
+     public void resizeHeight(int height) { 
+         this.height = height; 
+     } 
+ 
+     public int getWidth() { 
+         return width; 
+     } 
+ 
+     public int getHeight() { 
+         return height; 
+     } 
+ } 
+ 
+  class Resizable_main { 
+     public static void main(String[] args) { 
+         Rectangle rectangle = new Rectangle(10, 20); 
+         System.out.println("Original width: " + rectangle.getWidth()); 
+         System.out.println("Original height: " + rectangle.getHeight()); 
+         rectangle.resizeWidth(30); 
+         rectangle.resizeHeight(40); 
+         System.out.println("New width: " + rectangle.getWidth()); 
+         System.out.println("New height: " + rectangle.getHeight()); 
+     } 
+} 
+ 
+ 
+Output:  
+Original width: 10 
+Original height: 20 
+New width: 30 
+New height: 40 
